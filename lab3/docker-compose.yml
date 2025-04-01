@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_laravel
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'laravel-app'
+      MYSQL_ROOT_PASSWORD: '1234'
+    ports:
+      - "3305:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
