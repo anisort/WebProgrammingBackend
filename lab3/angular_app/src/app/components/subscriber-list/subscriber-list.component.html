@@ -1,0 +1,51 @@
+<div class="main-container">
+    <div class="container">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nmae</th>
+                <th>Email</th>
+                <th>Subscriptions amount</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let subscriber of subscribers" (click)="toggleSubscriptions(subscriber.id)">
+                <td>{{ subscriber.id }}</td>
+                <td>{{ subscriber.name }}</td>
+                <td>{{ subscriber.email }}</td>
+                <td>{{ subscriber.subscriptions.length }}</td>
+                <td>
+                <button (click)="toggleSubscriptions(subscriber.id); $event.stopPropagation()">
+                    {{ expandedSubscriberId === subscriber.id ? 'Hide' : 'Show' }}
+                </button>
+                </td>
+            </tr>
+        
+            <ng-container *ngIf="expandedSubscriberId as expandedId">
+                <ng-container *ngFor="let subscriber of subscribers">
+                <ng-container *ngIf="subscriber.id === expandedId">
+                    <tr *ngFor="let subscription of subscriber.subscriptions">
+                    <td colspan="5">
+                        <strong>Service:</strong> {{ subscription.service }} |
+                        <strong>Topic:</strong> {{ subscription.topic }} |
+                        <strong>Expired at:</strong> {{ subscription.expired_at }} |
+                        <strong>Payload: </strong> {{subscription.payload}}
+                    </td>
+                    </tr>
+                </ng-container>
+                </ng-container>
+            </ng-container>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+        <span>Сторінка {{ currentPage }} з {{ totalPages }}</span>
+        <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+</div>
+
+
+  
