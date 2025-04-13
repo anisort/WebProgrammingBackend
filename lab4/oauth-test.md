@@ -99,31 +99,24 @@ Authorization: Bearer <access_token>
 
 > Для довірених додатків. Потребує введення логіна та пароля користувача.
 
-**Запит на `tokenUrl`:**
+**Параметри авторизації:**
 
-```http
-POST /realms/horpynych/protocol/openid-connect/token
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=password
-&username=horpynych
-&password=1234
-&client_id=password-credentials-flow
-&client_secret=<your-client-secret> (якщо потрібно)
-&scope=openid
+```
+tokenUrl:        http://localhost:8080/realms/horpynych/protocol/openid-connect/token
+username:        horpynych
+password:        1234
+scope:           openid
+client_id:       password-credentials-flow
+client_secret:   <your-client-secret> (if required)
 ```
 
-**Відповідь:**
-```json
-{
-  "access_token": "...",
-  "expires_in": 300,
-  "token_type": "Bearer",
-  ...
-}
-```
+**Кроки:**
 
-**Далі:**
+1. Натисніть `Authorize`, оберіть `keycloakPassword`.
+2. Увійдіть у Keycloak.
+3. Swagger UI автоматично його використовує.
+
+**Запит:**
 
 ```http
 GET /realms/horpynych/protocol/openid-connect/userinfo
@@ -149,29 +142,22 @@ Authorization: Bearer <access_token>
 
 > Для авторизації між сервісами (server-to-server), без участі користувача.
 
-**Запит на `tokenUrl`:**
+**Параметри авторизації:**
 
-```http
-POST /realms/horpynych/protocol/openid-connect/token
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=client_credentials
-&client_id=client-credentials-flow
-&client_secret=<your-client-secret>
-&scope=openid
+```
+tokenUrl:        http://localhost:8080/realms/horpynych/protocol/openid-connect/token
+scope:           openid
+client_id:       password-credentials-flow
+client_secret:   <your-client-secret>
 ```
 
-**Відповідь:**
-```json
-{
-  "access_token": "...",
-  "expires_in": 300,
-  "token_type": "Bearer",
-  ...
-}
-```
+**Кроки:**
 
-**Далі:**
+1. Натисніть `Authorize`, оберіть `keycloakClientCreds`.
+2. Увійдіть у Keycloak.
+3. Swagger UI автоматично його використовує.
+
+**Запит:**
 
 ```http
 GET /realms/horpynych/protocol/openid-connect/userinfo
