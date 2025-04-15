@@ -1,3 +1,0 @@
-D:\University6\Web-programming\lab2\03-simple-entities\sonar-scanner-7.0.2.4839-windows-x64\bin\sonar-scanner.bat -D"sonar.projectKey=nest-app" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_94058464261fe6e21096bb9047a903df62050f2d"
-
-npx eslint src/ --ext .js,.jsx,.ts,.tsx

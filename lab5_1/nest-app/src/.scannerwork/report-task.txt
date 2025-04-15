@@ -1,6 +1,0 @@
-projectKey=nest-app
-serverUrl=http://localhost:9000
-serverVersion=25.3.0.104237
-dashboardUrl=http://localhost:9000/dashboard?id=nest-app
-ceTaskId=647e097f-52c4-4cd7-baca-da504152c711
-ceTaskUrl=http://localhost:9000/api/ce/task?id=647e097f-52c4-4cd7-baca-da504152c711
