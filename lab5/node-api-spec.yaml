@@ -131,8 +131,6 @@ components:
 
 security:
   - keycloakAuthCode: [openid]
-  - keycloakImplicit: [openid]
-  - keycloakPassword: [openid]
   - keycloakClientCreds: [openid]
 
 paths:
