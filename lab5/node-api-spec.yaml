@@ -128,6 +128,13 @@ components:
           type: string
           format: date-time
 
+
+security:
+  - keycloakAuthCode: [openid]
+  - keycloakImplicit: [openid]
+  - keycloakPassword: [openid]
+  - keycloakClientCreds: [openid]
+
 paths:
   /categories:
     get:
