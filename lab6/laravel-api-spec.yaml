@@ -9,6 +9,10 @@ servers:
   - url: http://localhost/php
     description: Main API Server
 
+
+security:
+  - keycloakAuthCode: [openid]
+  - keycloakClientCreds: [openid]
 paths:
   /subscribers:
     get:
@@ -200,6 +204,25 @@ paths:
           description: Subscription deleted successfully
 
 components:
+  securitySchemes:
+    keycloakAuthCode:
+      type: oauth2
+      description: Authentication via Keycloak — Authorization Code Flow
+      flows:
+        authorizationCode:
+          authorizationUrl: http://localhost:8080/realms/horpynych/protocol/openid-connect/auth
+          tokenUrl: http://localhost:8080/realms/horpynych/protocol/openid-connect/token
+          scopes:
+            openid: Access to basic user information
+
+    keycloakClientCreds:
+      type: oauth2
+      description: Authentication via Keycloak — Client Credentials Flow
+      flows:
+        clientCredentials:
+          tokenUrl: http://localhost:8080/realms/horpynych/protocol/openid-connect/token
+          scopes:
+            openid: Access to basic user information
   schemas:
     Subscriber:
       type: object

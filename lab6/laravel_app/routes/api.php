@@ -9,5 +9,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::resource('subscribers', SubscriberController::class);
-Route::resource('subscriptions', SubscriptionController::class);
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::resource('subscribers', SubscriberController::class);
+    Route::resource('subscriptions', SubscriptionController::class);
+});
+
